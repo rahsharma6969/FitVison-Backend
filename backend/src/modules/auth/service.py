@@ -9,6 +9,10 @@ def get_user_by_email(db: Session, email: str):
     return db.query(User).filter(User.email == email).first()
 
 
+def get_user_by_id(db: Session, user_id):
+    return db.query(User).filter(User.id == user_id).first()
+
+
 def create_user(db: Session, payload: UserSignupRequest):
     existing_user = get_user_by_email(db, payload.email)
     if existing_user:
